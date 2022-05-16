@@ -12,8 +12,13 @@
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                <form>
+                <form action="{% url 'search' %}" method="post">
+                    <!-- csrf token is used to stop csrf attacks, makes forms secure -->
+                    {% csrf_token %}
+                    <!-- Could try to use django form (as below) instead of html form-->
+                    <!--{{ form }} -->
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                    <input type="submit" hidden>
                 </form>
                 <div>
                     <a href="{% url 'index' %}">Home</a>
